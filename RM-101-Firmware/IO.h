@@ -13,6 +13,15 @@ namespace IO {
 
 	extern const GeneralIOPort PORT_A;
 	extern const GeneralIOPort PORT_B;
+	extern const GeneralIOPort PORT_C;
+	extern const GeneralIOPort PORT_D;
+	extern const GeneralIOPort PORT_E;
+	extern const GeneralIOPort PORT_F;
+	extern const GeneralIOPort PORT_G;
+	extern const GeneralIOPort PORT_H;
+	extern const GeneralIOPort PORT_J;
+	extern const GeneralIOPort PORT_K;
+	extern const GeneralIOPort PORT_L;
 }
 
 #endif
