@@ -22,6 +22,10 @@ void DigitalOutput::set(State state)
 		*port.output_register &= ~bitmask;
 }
 
+void DigitalOutput::set(bool state) {
+	set((State)state);
+}
+
 void DigitalOutput::toggle() {
 	*port.input_register |= bitmask;
 }

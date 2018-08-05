@@ -10,8 +10,8 @@ class DigitalOutput
 {
 public:
 	enum State {
-		HIGH = true,
-		LOW = false
+		High = true,
+		Low = false
 	};
 
 	DigitalOutput(IO::GeneralIOPort port, uint8_t pin);
@@ -19,6 +19,7 @@ public:
 	void initialize();
 
 	void set(State state);
+	void set(bool state);
 	void toggle();
 
 private:
