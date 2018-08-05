@@ -16,7 +16,7 @@ void DigitalOutput::initialize()
 
 void DigitalOutput::set(State state)
 {
-	if (state == HIGH)
+	if (state == High)
 		*port.output_register |= bitmask;
 	else
 		*port.output_register &= ~bitmask;
