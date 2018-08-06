@@ -16,8 +16,8 @@ public:
 	};
 
 	enum Direction {
-		Forward,
-		Reverse
+		Forward = 0,
+		Reverse = 1
 	};
 
 	A4982(DigitalOutput step_output, DigitalOutput direction_output, DigitalOutput microstep_1_output, DigitalOutput microstep_2_output, DigitalOutput enable_output, DigitalOutput cs_output);
