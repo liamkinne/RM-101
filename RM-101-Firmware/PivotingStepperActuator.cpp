@@ -13,7 +13,7 @@ void PivotingStepperActuator::set_steps_per_degree(double steps)
 
 void PivotingStepperActuator::set_angle_degrees(double angle)
 {
-	uint16_t steps = angle * steps_per_degree;
+	uint16_t steps = fabs(angle) * steps_per_degree;
 
 	if (angle >= 0)
 		motor.set_direction(A4982::Forward);

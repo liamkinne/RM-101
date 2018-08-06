@@ -2,6 +2,7 @@
 #define PIVOTING_STEPPER_ACTUATOR_H
 
 #include <stdint.h>
+#include <math.h>
 #include "A4982.h"
 
 class PivotingStepperActuator
