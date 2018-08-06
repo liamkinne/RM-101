@@ -19,12 +19,12 @@ void A4982::set_microstep(MicrostepResolution resolution)
 
 void A4982::set_enabled(bool enabled)
 {
-	enable_output.set(enabled);
+	enable_output.set(!enabled);
 }
 
 void A4982::set_direction(Direction direction)
 {
-	direction_output.set(!(bool)direction);
+	direction_output.set((bool)direction);
 }
 
 void A4982::step()
