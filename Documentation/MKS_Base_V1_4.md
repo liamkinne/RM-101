@@ -4,58 +4,61 @@
 
 ### Stepper Drivers
 
+#### Key
+STEP: 
+
 #### X Axis
 
-| Name | Pin |
-|------|-----|
-| STEP | F0 |
-| DIR | F1 |
-| MS1 | E3 |
-| MS2 | H3 |
-| ENA | D3 |
-| CS | B3 |
+| Name | Port | Pin |
+|------|------|-----|
+| STEP | F    | 0   |
+| DIR  | F    | 1   |
+| MS1  | E    | 3   |
+| MS2  | H    | 3   |
+| ENA  | D    | 3   |
+| CS   | B    | 3   |
 
 #### Y Axis
 
-| Name | Pin |
-|------|-----|
-| STEP | F6 |
-| DIR | F7 |
-| MS1 | F5 |
-| MS2 | F4 |
-| ENA | F2 |
-| CS | L0 |
+| Name | Port | Pin |
+|------|------|-----|
+| STEP | F    | 6   |
+| DIR  | F    | 7   |
+| MS1  | F    | 5   |
+| MS2  | F    | 4   |
+| ENA  | F    | 2   |
+| CS   | L    | 0   |
 
 #### Z Axis
 
-| Name | Pin |
-|------|-----|
-| STEP | L6 |
-| DIR | L1 |
-| MS1 | A0 |
-| MS2 | G2 |
-| ENA | K0 |
-| CS | G1 |
+| Name | Port | Pin |
+|------|------|-----|
+| STEP | L    | 6   |
+| DIR  | L    | 1   |
+| MS1  | A    | 0   |
+| MS2  | G    | 2   |
+| ENA  | K    | 0   |
+| CS   | G    | 1   |
 
 #### E0 Axis
 
-| Name | Pin |
-|------|-----|
-| STEP | A4 |
-| DIR | A6 |
-| MS1 | K1 |
-| MS2 | K2 |
-| ENA | A2 |
-| CS | G1 |
+| Name | Port | Pin |
+|------|------|-----|
+| STEP | A    | 4   |
+| DIR  | A    | 6   |
+| MS1  | K    | 1   |
+| MS2  | K    | 2   |
+| ENA  | A    | 2   |
+| CS   | G    | 1   |
 
 
 #### E1 Axis
 
-| Name | Pin |
-|------|-----|
-| STEP | C1 |
-| DIR | A6 |
-| MS1 | F3 |
-| MS2 | G5 |
-| ENA | A2 |
-| CS | L7 |
+| Name | Port | Pin |
+|------|------|-----|
+| STEP | C    | 1   |
+| DIR  | A    | 6   |
+| MS1  | F    | 3   |
+| MS2  | G    | 5   |
+| ENA  | A    | 2   |
+| CS   | L    | 7   |
