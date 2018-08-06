@@ -5,7 +5,11 @@
 ### Stepper Drivers
 
 #### Key
-STEP: 
+- STEP: Output used to incriment the motor one step with a size determined by the Microstepping setting.
+- DIR: Direction of motor rotation. 
+- MS1: Microstep bit 1
+- MS2: Microstep bit 2
+- ENA: Enable pin which turns on the outputs when driven low.
 
 #### X Axis
 
