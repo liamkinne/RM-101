@@ -29,7 +29,6 @@ void A4982::set_direction(Direction direction)
 
 void A4982::step()
 {
-	//60*1000000L/steps/microsteps/rpm
 	step_output.set(DigitalOutput::High);
 	delay_microseconds(110);
 	step_output.set(DigitalOutput::Low);
