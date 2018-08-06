@@ -2,7 +2,7 @@
 
 PivotingStepperActuator::PivotingStepperActuator(A4982 motor): motor(motor)
 {
-
+	motor.set_enabled(true);
 }
 
 
