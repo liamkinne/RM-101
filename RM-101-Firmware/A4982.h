@@ -15,10 +15,9 @@ public:
 		SixteenthStep	= 0b11
 	};
 
-	enum Direction
-	{
-		Forwards 	= 0,
-		Reverse 	= 1
+	enum Direction {
+		Forward,
+		Reverse
 	};
 
 	A4982(DigitalOutput step_output, DigitalOutput direction_output, DigitalOutput microstep_1_output, DigitalOutput microstep_2_output, DigitalOutput enable_output, DigitalOutput cs_output);
