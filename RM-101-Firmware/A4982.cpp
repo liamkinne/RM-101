@@ -30,7 +30,7 @@ void A4982::set_direction(Direction direction)
 void A4982::step()
 {
 	step_output.set(DigitalOutput::High);
-	delay_microseconds(110);
+	delay_microseconds(125);
 	step_output.set(DigitalOutput::Low);
-	delay_microseconds(110);
+	delay_microseconds(125);
 }
