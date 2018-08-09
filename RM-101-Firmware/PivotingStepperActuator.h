@@ -14,9 +14,18 @@ public:
 
 	void set_angle_degrees(double angle);
 
+	void update();
+
+	bool is_finished();
+
+	uint16_t steps_left;
+	bool finished;
+
 private:
 	A4982 motor;
 	double steps_per_degree;
+
+
 };
 
 #endif
