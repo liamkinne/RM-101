@@ -44,8 +44,8 @@ DigitalOutput e1_enable	(IO::PORT_C, 7);
 DigitalOutput e1_cs		(IO::PORT_L, 5);
 A4982 e1_motor(e1_step, e1_dir, e1_ms1, e1_ms2, e1_enable, e1_cs);
 
-PivotingStepperActuator lift(x_motor);
-PivotingStepperActuator rotate(y_motor);
+PivotingStepperActuator rotate(x_motor);
+PivotingStepperActuator lift(y_motor);
 PivotingStepperActuator elbow(z_motor);
 PivotingStepperActuator grab(e0_motor);
 PivotingStepperActuator misc(e1_motor);
@@ -57,18 +57,17 @@ void setup()
 	z_motor.set_microstep(A4982::SixteenthStep);
 	e0_motor.set_microstep(A4982::SixteenthStep);
 	e1_motor.set_microstep(A4982::SixteenthStep);
-	lift.set_steps_per_degree(375);
-	rotate.set_steps_per_degree(375);
-	elbow.set_steps_per_degree(375);
-	grab.set_steps_per_degree(375);
-	misc.set_steps_per_degree(375);
-	misc.set_angle_degrees(-30);
+	rotate.set_steps_per_degree(360);
+	lift.set_steps_per_degree(360);
+	elbow.set_steps_per_degree(360);
+	grab.set_steps_per_degree(360);
+	misc.set_steps_per_degree(360);
 }
 
 void loop()
 {
-	lift.update();
 	rotate.update();
+	lift.update();
 	elbow.update();
 	grab.update();
 	misc.update();
