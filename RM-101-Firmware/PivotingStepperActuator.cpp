@@ -2,7 +2,7 @@
 
 PivotingStepperActuator::PivotingStepperActuator(A4982 motor): motor(motor)
 {
-	motor.set_enabled(true);
+
 }
 
 
@@ -21,6 +21,7 @@ void PivotingStepperActuator::set_angle_degrees(double angle)
 		motor.set_direction(A4982::Reverse);
 
 	finished = false;
+	motor.set_enabled(true);
 }
 
 void PivotingStepperActuator::update()
@@ -31,6 +32,7 @@ void PivotingStepperActuator::update()
 	}
 	else {
 		finished = true;
+		motor.set_enabled(false);
 	}
 }
 
