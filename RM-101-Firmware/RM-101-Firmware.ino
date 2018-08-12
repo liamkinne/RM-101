@@ -2,6 +2,7 @@
 #include "DigitalInput.h"
 #include "A4982.h"
 #include "PivotingStepperActuator.h"
+#include "EndStop.h"
 #include "IO.h"
 
 DigitalOutput x_step	(IO::PORT_F, 0);
@@ -62,10 +63,26 @@ void setup()
 	elbow.set_steps_per_degree(360);
 	grab.set_steps_per_degree(360);
 	misc.set_steps_per_degree(360);
+	
+	Serial.begin(115200);
 }
 
 void loop()
 {
+	if (Serial.available())
+	{
+		switch(Serial.read())
+		{
+			case 'W': lift.set_angle_degrees(5); break;
+			case 'S': lift.set_angle_degrees(-5); break;
+			case 'A': rotate.set_angle_degrees(5); break;
+			case 'D': rotate.set_angle_degrees(-5); break;
+			case 'R': elbow.set_angle_degrees(-5); break;
+			case 'F': elbow.set_angle_degrees(5); break;
+			case 'Q': grab.set_angle_degrees(15); break;
+			case 'E': grab.set_angle_degrees(-15); break;
+		}
+	}
 	rotate.update();
 	lift.update();
 	elbow.update();
