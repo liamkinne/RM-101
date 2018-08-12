@@ -2,7 +2,6 @@
 #include "DigitalInput.h"
 #include "A4982.h"
 #include "PivotingStepperActuator.h"
-#include "EndStop.h"
 #include "IO.h"
 
 DigitalOutput x_step	(IO::PORT_F, 0);
