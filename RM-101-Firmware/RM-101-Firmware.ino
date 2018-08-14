@@ -57,7 +57,7 @@ void setup()
 	z_motor.set_microstep(A4982::SixteenthStep);
 	e0_motor.set_microstep(A4982::SixteenthStep);
 	e1_motor.set_microstep(A4982::SixteenthStep);
-	rotate.set_steps_per_degree(360);
+	rotate.set_steps_per_degree(400);
 	lift.set_steps_per_degree(360);
 	elbow.set_steps_per_degree(360);
 	grab.set_steps_per_degree(360);
@@ -78,8 +78,8 @@ void loop()
 			case 'D': rotate.set_angle_degrees(-5); break;
 			case 'R': elbow.set_angle_degrees(-5); break;
 			case 'F': elbow.set_angle_degrees(5); break;
-			case 'Q': grab.set_angle_degrees(15); break;
-			case 'E': grab.set_angle_degrees(-15); break;
+			case 'Q': grab.set_angle_degrees(10); break;
+			case 'E': grab.set_angle_degrees(-10); break;
 		}
 	}
 	rotate.update();
