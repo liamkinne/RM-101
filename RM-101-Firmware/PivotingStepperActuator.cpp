@@ -24,11 +24,18 @@ void PivotingStepperActuator::set_angle_degrees(double angle)
 	motor.set_enabled(true);
 }
 
-void PivotingStepperActuator::update()
+void PivotingStepperActuator::update_start()
+{
+	if (steps_left > 0) {
+		motor.step_output.set(true);
+	}
+}
+
+void PivotingStepperActuator::update_finish()
 {
 	if (steps_left > 0) {
 		steps_left--;
-		motor.step();
+		motor.step_output.set(false);
 	}
 	else {
 		finished = true;

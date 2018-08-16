@@ -28,8 +28,9 @@ public:
 	void set_direction(Direction direction);
 	void step();
 
-private:
 	DigitalOutput step_output;
+
+private:
 	DigitalOutput direction_output;
 	DigitalOutput microstep_1_output;
 	DigitalOutput microstep_2_output;

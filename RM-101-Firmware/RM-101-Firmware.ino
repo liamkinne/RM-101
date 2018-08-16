@@ -3,6 +3,7 @@
 #include "A4982.h"
 #include "PivotingStepperActuator.h"
 #include "IO.h"
+#include "ActuatorSubsystem.h"
 
 DigitalOutput x_step	(IO::PORT_F, 0);
 DigitalOutput x_dir		(IO::PORT_F, 1);
@@ -72,19 +73,36 @@ void loop()
 	{
 		switch(Serial.read())
 		{
-			case 'W': lift.set_angle_degrees(5); break;
-			case 'S': lift.set_angle_degrees(-5); break;
-			case 'A': rotate.set_angle_degrees(5); break;
-			case 'D': rotate.set_angle_degrees(-5); break;
-			case 'R': elbow.set_angle_degrees(-5); break;
-			case 'F': elbow.set_angle_degrees(5); break;
-			case 'Q': grab.set_angle_degrees(10); break;
-			case 'E': grab.set_angle_degrees(-10); break;
+			case 'W': lift.set_angle_degrees(500); break;
+			case 'w': lift.set_angle_degrees(0); break;
+			case 'S': lift.set_angle_degrees(-500); break;
+			case 's': lift.set_angle_degrees(0); break;
+
+			case 'A': rotate.set_angle_degrees(1000); break;
+			case 'a': rotate.set_angle_degrees(0); break;
+			case 'D': rotate.set_angle_degrees(-1000); break;
+			case 'd': rotate.set_angle_degrees(0); break;
+
+			case 'R': elbow.set_angle_degrees(-500); break;
+			case 'r': elbow.set_angle_degrees(0); break;
+			case 'F': elbow.set_angle_degrees(500); break;
+			case 'f': elbow.set_angle_degrees(0); break;
+
+			case 'Q': grab.set_angle_degrees(500); break;
+			case 'q': grab.set_angle_degrees(0); break;
+			case 'E': grab.set_angle_degrees(-500); break;
+			case 'e': grab.set_angle_degrees(0); break;
 		}
 	}
-	rotate.update();
-	lift.update();
-	elbow.update();
-	grab.update();
-	misc.update();
+
+	rotate.update_start();
+	lift.update_start();
+	elbow.update_start();
+	grab.update_start();
+	delay_microseconds(115);
+	rotate.update_finish();
+	lift.update_finish();
+	elbow.update_finish();
+	grab.update_finish();
+	delay_microseconds(115);
 }
