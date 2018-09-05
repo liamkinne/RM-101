@@ -3,6 +3,7 @@
 #include "A4982.h"
 #include "PivotingStepperActuator.h"
 #include "IO.h"
+#include <util/delay.h>
 
 DigitalOutput x_step	(IO::PORT_F, 0);
 DigitalOutput x_dir		(IO::PORT_F, 1);
@@ -67,11 +68,11 @@ int main() {
 		lift.update_start();
 		elbow.update_start();
 		grab.update_start();
-		delay_microseconds(115);
+		_delay_us(115);
 		rotate.update_finish();
 		lift.update_finish();
 		elbow.update_finish();
 		grab.update_finish();
-		delay_microseconds(115);
+		_delay_us(115);
 	}
 }
