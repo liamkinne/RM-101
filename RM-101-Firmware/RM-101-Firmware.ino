@@ -62,38 +62,10 @@ void setup()
 	elbow.set_steps_per_degree(360);
 	grab.set_steps_per_degree(360);
 	misc.set_steps_per_degree(360);
-	
-	Serial.begin(115200);
 }
 
 void loop()
 {
-	if (Serial.available())
-	{
-		switch(Serial.read())
-		{
-			case 'W': lift.set_angle_degrees(500); break;
-			case 'w': lift.set_angle_degrees(0); break;
-			case 'S': lift.set_angle_degrees(-500); break;
-			case 's': lift.set_angle_degrees(0); break;
-
-			case 'A': rotate.set_angle_degrees(1000); break;
-			case 'a': rotate.set_angle_degrees(0); break;
-			case 'D': rotate.set_angle_degrees(-1000); break;
-			case 'd': rotate.set_angle_degrees(0); break;
-
-			case 'R': elbow.set_angle_degrees(-500); break;
-			case 'r': elbow.set_angle_degrees(0); break;
-			case 'F': elbow.set_angle_degrees(500); break;
-			case 'f': elbow.set_angle_degrees(0); break;
-
-			case 'Q': grab.set_angle_degrees(500); break;
-			case 'q': grab.set_angle_degrees(0); break;
-			case 'E': grab.set_angle_degrees(-500); break;
-			case 'e': grab.set_angle_degrees(0); break;
-		}
-	}
-
 	rotate.update_start();
 	lift.update_start();
 	elbow.update_start();
