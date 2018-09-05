@@ -1,48 +1,47 @@
-#include "DigitalOutput.h"
-#include "DigitalInput.h"
-#include "A4982.h"
+#include <DigitalOutput.h>
+#include <DigitalInput.h>
+#include <A4982.h>
 #include "PivotingStepperActuator.h"
-#include "IO.h"
-#include "ActuatorSubsystem.h"
+#include <util/delay.h>
 
-DigitalOutput x_step	(IO::PORT_F, 0);
-DigitalOutput x_dir		(IO::PORT_F, 1);
-DigitalOutput x_ms1		(IO::PORT_E, 3);
-DigitalOutput x_ms2		(IO::PORT_H, 3);
-DigitalOutput x_enable	(IO::PORT_D, 7);
-DigitalOutput x_cs		(IO::PORT_B, 0);
+DigitalOutput x_step	(GPIO::F, 0);
+DigitalOutput x_dir		(GPIO::F, 1);
+DigitalOutput x_ms1		(GPIO::E, 3);
+DigitalOutput x_ms2		(GPIO::H, 3);
+DigitalOutput x_enable	(GPIO::D, 7);
+DigitalOutput x_cs		(GPIO::B, 0);
 A4982 x_motor(x_step, x_dir, x_ms1, x_ms2, x_enable, x_cs);
 
-DigitalOutput y_step	(IO::PORT_F, 6);
-DigitalOutput y_dir		(IO::PORT_F, 7);
-DigitalOutput y_ms1		(IO::PORT_F, 5);
-DigitalOutput y_ms2		(IO::PORT_F, 4);
-DigitalOutput y_enable	(IO::PORT_F, 2);
-DigitalOutput y_cs		(IO::PORT_L, 0);
+DigitalOutput y_step	(GPIO::F, 6);
+DigitalOutput y_dir		(GPIO::F, 7);
+DigitalOutput y_ms1		(GPIO::F, 5);
+DigitalOutput y_ms2		(GPIO::F, 4);
+DigitalOutput y_enable	(GPIO::F, 2);
+DigitalOutput y_cs		(GPIO::L, 0);
 A4982 y_motor(y_step, y_dir, y_ms1, y_ms2, y_enable, y_cs);
 
-DigitalOutput z_step	(IO::PORT_L, 3);
-DigitalOutput z_dir		(IO::PORT_L, 1);
-DigitalOutput z_ms1		(IO::PORT_A, 0);
-DigitalOutput z_ms2		(IO::PORT_G, 2);
-DigitalOutput z_enable	(IO::PORT_K, 0);
-DigitalOutput z_cs		(IO::PORT_G, 1);
+DigitalOutput z_step	(GPIO::L, 3);
+DigitalOutput z_dir		(GPIO::L, 1);
+DigitalOutput z_ms1		(GPIO::A, 0);
+DigitalOutput z_ms2		(GPIO::G, 2);
+DigitalOutput z_enable	(GPIO::K, 0);
+DigitalOutput z_cs		(GPIO::G, 1);
 A4982 z_motor(z_step, z_dir, z_ms1, z_ms2, z_enable, z_cs);
 
-DigitalOutput e0_step	(IO::PORT_A, 4);
-DigitalOutput e0_dir	(IO::PORT_A, 6);
-DigitalOutput e0_ms1	(IO::PORT_K, 1);
-DigitalOutput e0_ms2	(IO::PORT_K, 2);
-DigitalOutput e0_enable	(IO::PORT_A, 2);
-DigitalOutput e0_cs		(IO::PORT_G, 1);
+DigitalOutput e0_step	(GPIO::A, 4);
+DigitalOutput e0_dir	(GPIO::A, 6);
+DigitalOutput e0_ms1	(GPIO::K, 1);
+DigitalOutput e0_ms2	(GPIO::K, 2);
+DigitalOutput e0_enable	(GPIO::A, 2);
+DigitalOutput e0_cs		(GPIO::G, 1);
 A4982 e0_motor(e0_step, e0_dir, e0_ms1, e0_ms2, e0_enable, e0_cs);
 
-DigitalOutput e1_step	(IO::PORT_C, 1);
-DigitalOutput e1_dir	(IO::PORT_C, 3);
-DigitalOutput e1_ms1	(IO::PORT_F, 3);
-DigitalOutput e1_ms2	(IO::PORT_G, 5);
-DigitalOutput e1_enable	(IO::PORT_C, 7);
-DigitalOutput e1_cs		(IO::PORT_L, 5);
+DigitalOutput e1_step	(GPIO::C, 1);
+DigitalOutput e1_dir	(GPIO::C, 3);
+DigitalOutput e1_ms1	(GPIO::F, 3);
+DigitalOutput e1_ms2	(GPIO::G, 5);
+DigitalOutput e1_enable	(GPIO::C, 7);
+DigitalOutput e1_cs		(GPIO::L, 5);
 A4982 e1_motor(e1_step, e1_dir, e1_ms1, e1_ms2, e1_enable, e1_cs);
 
 PivotingStepperActuator rotate(x_motor);
@@ -51,8 +50,7 @@ PivotingStepperActuator elbow(z_motor);
 PivotingStepperActuator grab(e0_motor);
 PivotingStepperActuator misc(e1_motor);
 
-void setup()
-{
+int main() {
 	x_motor.set_microstep(A4982::SixteenthStep);
 	y_motor.set_microstep(A4982::SixteenthStep);
 	z_motor.set_microstep(A4982::SixteenthStep);
@@ -63,46 +61,17 @@ void setup()
 	elbow.set_steps_per_degree(360);
 	grab.set_steps_per_degree(360);
 	misc.set_steps_per_degree(360);
-	
-	Serial.begin(115200);
-}
 
-void loop()
-{
-	if (Serial.available())
-	{
-		switch(Serial.read())
-		{
-			case 'W': lift.set_angle_degrees(500); break;
-			case 'w': lift.set_angle_degrees(0); break;
-			case 'S': lift.set_angle_degrees(-500); break;
-			case 's': lift.set_angle_degrees(0); break;
-
-			case 'A': rotate.set_angle_degrees(1000); break;
-			case 'a': rotate.set_angle_degrees(0); break;
-			case 'D': rotate.set_angle_degrees(-1000); break;
-			case 'd': rotate.set_angle_degrees(0); break;
-
-			case 'R': elbow.set_angle_degrees(-500); break;
-			case 'r': elbow.set_angle_degrees(0); break;
-			case 'F': elbow.set_angle_degrees(500); break;
-			case 'f': elbow.set_angle_degrees(0); break;
-
-			case 'Q': grab.set_angle_degrees(500); break;
-			case 'q': grab.set_angle_degrees(0); break;
-			case 'E': grab.set_angle_degrees(-500); break;
-			case 'e': grab.set_angle_degrees(0); break;
-		}
+	while (true) {
+		rotate.update_start();
+		lift.update_start();
+		elbow.update_start();
+		grab.update_start();
+		_delay_us(115);
+		rotate.update_finish();
+		lift.update_finish();
+		elbow.update_finish();
+		grab.update_finish();
+		_delay_us(115);
 	}
-
-	rotate.update_start();
-	lift.update_start();
-	elbow.update_start();
-	grab.update_start();
-	delay_microseconds(115);
-	rotate.update_finish();
-	lift.update_finish();
-	elbow.update_finish();
-	grab.update_finish();
-	delay_microseconds(115);
 }
