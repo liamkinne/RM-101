@@ -50,8 +50,7 @@ PivotingStepperActuator elbow(z_motor);
 PivotingStepperActuator grab(e0_motor);
 PivotingStepperActuator misc(e1_motor);
 
-void setup()
-{
+int main() {
 	x_motor.set_microstep(A4982::SixteenthStep);
 	y_motor.set_microstep(A4982::SixteenthStep);
 	z_motor.set_microstep(A4982::SixteenthStep);
@@ -62,18 +61,17 @@ void setup()
 	elbow.set_steps_per_degree(360);
 	grab.set_steps_per_degree(360);
 	misc.set_steps_per_degree(360);
-}
 
-void loop()
-{
-	rotate.update_start();
-	lift.update_start();
-	elbow.update_start();
-	grab.update_start();
-	delay_microseconds(115);
-	rotate.update_finish();
-	lift.update_finish();
-	elbow.update_finish();
-	grab.update_finish();
-	delay_microseconds(115);
+	while (true) {
+		rotate.update_start();
+		lift.update_start();
+		elbow.update_start();
+		grab.update_start();
+		delay_microseconds(115);
+		rotate.update_finish();
+		lift.update_finish();
+		elbow.update_finish();
+		grab.update_finish();
+		delay_microseconds(115);
+	}
 }
