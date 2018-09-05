@@ -3,7 +3,6 @@
 #include "A4982.h"
 #include "PivotingStepperActuator.h"
 #include "IO.h"
-#include "ActuatorSubsystem.h"
 
 DigitalOutput x_step	(IO::PORT_F, 0);
 DigitalOutput x_dir		(IO::PORT_F, 1);
