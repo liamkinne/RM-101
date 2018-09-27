@@ -13,6 +13,8 @@ int main() {
 	grab.set_steps_per_degree(360);
 	misc.set_steps_per_degree(360);
 
+	lift.set_angle_degrees(-60);
+
 	while (true) {
 		rotate.update_start();
 		lift.update_start();
