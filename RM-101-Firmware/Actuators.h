@@ -4,7 +4,7 @@
 #include <DigitalOutput.h>
 #include <DigitalInput.h>
 #include <A4982.h>
-#include "PivotingStepperActuator.h"
+#include "PivotingActuator.h"
 
 // X Motor
 DigitalOutput x_step	(GPIO::F, 0);
@@ -51,10 +51,10 @@ DigitalOutput e1_enable	(GPIO::C, 7);
 DigitalOutput e1_cs		(GPIO::L, 5);
 A4982 e1_motor(&e1_step, &e1_dir, &e1_ms1, &e1_ms2, &e1_enable, &e1_cs);
 
-PivotingStepperActuator rotate(x_motor);
-PivotingStepperActuator lift(y_motor);
-PivotingStepperActuator elbow(z_motor);
-PivotingStepperActuator grab(e0_motor);
-PivotingStepperActuator misc(e1_motor);
+PivotingActuator rotate(x_motor, 0);
+PivotingActuator lift(y_motor, 0.2);
+PivotingActuator elbow(z_motor, 0.15);
+PivotingActuator grab(e0_motor, 0.09);
+PivotingActuator misc(e1_motor, 0);
 
 #endif
