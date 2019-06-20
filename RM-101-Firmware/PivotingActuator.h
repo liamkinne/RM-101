@@ -8,13 +8,9 @@
 class PivotingActuator
 {
 public:
-	PivotingActuator(A4982 motor, double length);
+	PivotingActuator(A4982 motor, double length, double steps_per_degree);
 
-	double get_length();
-
-	void set_steps_per_degree(double steps);
-
-	void set_angle_degrees(double angle);
+	void set_angle(double angle);
 
 	void update();
 
@@ -26,7 +22,7 @@ private:
 	double steps_per_degree;
 
 	double current_angle;
-	double target_angle
+	double target_angle;
 	double steps_left;
 	bool finished;
 };
