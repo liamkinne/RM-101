@@ -51,10 +51,10 @@ DigitalOutput e1_enable	(GPIO::C, 7);
 DigitalOutput e1_cs		(GPIO::L, 5);
 A4982 e1_motor(&e1_step, &e1_dir, &e1_ms1, &e1_ms2, &e1_enable, &e1_cs);
 
-PivotingActuator rotate(x_motor, 0, 300);
-PivotingActuator lift(y_motor, 0.2, 300);
-PivotingActuator elbow(z_motor, 0.15, 360);
-PivotingActuator grab(e0_motor, 0.09, 360);
-PivotingActuator misc(e1_motor, 0, 360);
+RotaryActuator rotate(x_motor, 0, 300);
+RotaryActuator lift(y_motor, 0.2, 300);
+RotaryActuator elbow(z_motor, 0.15, 360);
+RotaryActuator grab(e0_motor, 0.09, 360);
+RotaryActuator misc(e1_motor, 0, 360);
 
 #endif

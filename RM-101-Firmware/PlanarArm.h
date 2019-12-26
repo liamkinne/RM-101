@@ -1,12 +1,12 @@
 #ifndef PLANAR_ARM_H
 #define PLANAR_ARM_H
 
-#include "PivotingActuator.h"
+#include "RotaryActuator.h"
 
 class PlanarArm
 {
 public:
-	PlanarArm(PivotingActuator* first_pivot, PivotingActuator* second_pivot);
+	PlanarArm(RotaryActuator* first_pivot, RotaryActuator* second_pivot);
 	~PlanarArm();
 
 	void set_position(double x, double y);
@@ -14,8 +14,8 @@ public:
 	void update();
 
 private:
-	PivotingActuator* first_pivot;
-	PivotingActuator* second_pivot;
+	RotaryActuator* first_pivot;
+	RotaryActuator* second_pivot;
 };
 
 #endif
