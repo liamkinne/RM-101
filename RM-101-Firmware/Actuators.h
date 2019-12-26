@@ -4,7 +4,7 @@
 #include <DigitalOutput.h>
 #include <DigitalInput.h>
 #include <A4982.h>
-#include "PivotingActuator.h"
+#include "RotaryActuator.h"
 
 // X Motor
 DigitalOutput x_step	(GPIO::F, 0);

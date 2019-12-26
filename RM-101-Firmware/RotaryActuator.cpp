@@ -1,6 +1,6 @@
-#include "PivotingActuator.h"
+#include "RotaryActuator.h"
 
-PivotingActuator::PivotingActuator(A4982 motor, double length, double steps_per_degree):
+RotaryActuator::RotaryActuator(A4982 motor, double length, double steps_per_degree):
 	motor(motor),
 	length(length),
 	steps_per_degree(steps_per_degree)
@@ -8,13 +8,13 @@ PivotingActuator::PivotingActuator(A4982 motor, double length, double steps_per_
 
 }
 
-void PivotingActuator::set_angle(double angle)
+void RotaryActuator::set_angle(double angle)
 {
 	target_angle = angle;
 	steps_left = fabs(current_angle - angle) * steps_per_degree;
 }
 
-void PivotingActuator::update()
+void RotaryActuator::update()
 {
 	if ((target_angle - current_angle) >= 0)
 		motor.set_direction(A4982::Forward);
@@ -31,7 +31,7 @@ void PivotingActuator::update()
 	motor.set_enabled(true);
 }
 
-bool PivotingActuator::is_finished()
+bool RotaryActuator::is_finished()
 {
 	return finished;
 }
