@@ -1,19 +1,22 @@
-#include "Actuators.h"
+#include "Motors.h"
 #include <util/delay.h>
+#include "TwoJoint.h"
+
+TwoJoint joint(&x_motor, &y_motor, 200, 145);
 
 int main()
 {
-	x_motor.set_microstep(A4982::SixteenthStep);
-	y_motor.set_microstep(A4982::SixteenthStep);
-	z_motor.set_microstep(A4982::SixteenthStep);
-	e0_motor.set_microstep(A4982::SixteenthStep);
-	e1_motor.set_microstep(A4982::SixteenthStep);
+	x_driver.set_enabled(true);
+	y_driver.set_enabled(true);
+	x_driver.set_microstep(StepperDriver::SixteenthStep);
+	y_driver.set_microstep(StepperDriver::SixteenthStep);
 
-	//rotate.set_angle(90);
-	//lift.set_angle(90);
-	grab.set_angle(45);
- 
-	while (true) {
-		grab.update();
-	}
+	joint.set(200,0);
+
+	_delay_ms(100);
+
+	//joint.set(100,0);
+
+	x_driver.set_enabled(false);
+	y_driver.set_enabled(false);
 }

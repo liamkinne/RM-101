@@ -14,9 +14,9 @@ DigitalOutput x_ms2		(GPIO::H, 3);
 DigitalOutput x_enable	(GPIO::D, 7);
 DigitalOutput x_cs		(GPIO::B, 0);
 A4982 x_driver(&x_step, &x_dir, &x_ms1, &x_ms2, &x_enable, &x_cs);
-StepperMotor x_motor(&x_driver, 750);
+StepperMotor x_motor(&x_driver, 200);
 
-/*
+
 // Y Motor
 DigitalOutput y_step	(GPIO::F, 6);
 DigitalOutput y_dir		(GPIO::F, 7);
@@ -25,7 +25,8 @@ DigitalOutput y_ms2		(GPIO::F, 4);
 DigitalOutput y_enable	(GPIO::F, 2);
 DigitalOutput y_cs		(GPIO::L, 0);
 A4982 y_driver(&y_step, &y_dir, &y_ms1, &y_ms2, &y_enable, &y_cs);
-
+StepperMotor y_motor(&y_driver, 420);
+/*
 // Z Motor
 DigitalOutput z_step	(GPIO::L, 3);
 DigitalOutput z_dir		(GPIO::L, 1);
